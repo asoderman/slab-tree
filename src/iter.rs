@@ -10,7 +10,7 @@ pub struct Ancestors<'a, T> {
 }
 
 impl<'a, T> Ancestors<'a, T> {
-    pub(crate) fn new(node_id: Option<NodeId>, tree: &'a Tree<T>) -> Ancestors<T> {
+    pub fn new(node_id: Option<NodeId>, tree: &'a Tree<T>) -> Ancestors<T> {
         Ancestors { node_id, tree }
     }
 }
@@ -36,7 +36,7 @@ pub struct NextSiblings<'a, T> {
 }
 
 impl<'a, T> NextSiblings<'a, T> {
-    pub(crate) fn new(node_id: Option<NodeId>, tree: &'a Tree<T>) -> NextSiblings<T> {
+    pub fn new(node_id: Option<NodeId>, tree: &'a Tree<T>) -> NextSiblings<T> {
         NextSiblings { node_id, tree }
     }
 }
@@ -60,7 +60,7 @@ pub struct PreOrder<'a, T> {
 }
 
 impl<'a, T> PreOrder<'a, T> {
-    pub(crate) fn new(node: &NodeRef<'a, T>, tree: &'a Tree<T>) -> PreOrder<'a, T> {
+    pub fn new(node: &NodeRef<'a, T>, tree: &'a Tree<T>) -> PreOrder<'a, T> {
         let children = vec![];
         let start = tree.get(node.node_id());
         PreOrder {
@@ -103,7 +103,7 @@ pub struct PostOrder<'a, T> {
 }
 
 impl<'a, T> PostOrder<'a, T> {
-    pub(crate) fn new(node: &NodeRef<'a, T>, tree: &'a Tree<T>) -> PostOrder<'a, T> {
+    pub fn new(node: &NodeRef<'a, T>, tree: &'a Tree<T>) -> PostOrder<'a, T> {
         let node = tree
             .get(node.node_id())
             .expect("getting node of node ref id");
@@ -149,7 +149,7 @@ pub struct LevelOrder<'a, T> {
 }
 
 impl<'a, T> LevelOrder<'a, T> {
-    pub(crate) fn new(node: &NodeRef<'a, T>, tree: &'a Tree<T>) -> LevelOrder<'a, T> {
+    pub fn new(node: &NodeRef<'a, T>, tree: &'a Tree<T>) -> LevelOrder<'a, T> {
         let start = tree
             .get(node.node_id())
             .expect("getting node of node ref id");
